@@ -1,0 +1,6 @@
+Facter.add(:some) do
+ setcode do
+  Facter.value(:hostname) == 'puppet'	
+end
+end
+

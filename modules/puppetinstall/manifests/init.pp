@@ -1,5 +1,5 @@
 class puppetinstall {
 
-if $::hostname == 'puppet'  {include 'puppetinstall::serverinstall'}
+if $::some == 'true'  {include 'puppetinstall::serverinstall'}
 else {include 'puppetinstall::nodeinstall'}
 }
