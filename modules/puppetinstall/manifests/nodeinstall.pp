@@ -1,3 +1,4 @@
+# This class install puppet-agent
 class puppetinstall::nodeinstall(
   $agent_version = '1.7.0-1.el7',
 )
@@ -11,15 +12,15 @@ class puppetinstall::nodeinstall(
     gpgkey   => 'https://yum.puppetlabs.com/RPM-GPG-KEY-puppet https://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs'
   }
 
-  file { '/etc/hosts':
-    content => template('puppetinstall/hosts.erb'),
-    owner   => root,
-    group   => root,
-    mode    => '0644',	
-  }
+  host { 'puppet':
+    ip           => '192.168.56.50',
+    host_aliases => 'puppet.com',
+    }
 
-  package { 'puppet-agent': 
-    ensure =>'$agent_version'
+  package { 'puppet-agent':
+    name    => 'puppet-agent',
+    ensure  => $agent_version,
+    require => Yumrepo['puppetlabs-pc1'],
   }
 
   exec { 'source':

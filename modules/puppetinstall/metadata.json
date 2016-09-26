@@ -1,0 +1,15 @@
+{
+  "name": "frantskevitch-puppetinstall",
+  "version": "0.1.0",
+  "author": "Aleksandr Frantskevitch",
+  "summary": "installing puppet server and puppet node",
+  "license": "none",
+  "source": "https://github.com/Frantskevitch/puppet",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+

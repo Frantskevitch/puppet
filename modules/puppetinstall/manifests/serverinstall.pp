@@ -1,3 +1,5 @@
+# This class replace "hosts" file
+# Install puppet server and run it
 class puppetinstall::serverinstall(
   $server_version = '2.6.0-1.el7',
 )
@@ -16,9 +18,11 @@ class puppetinstall::serverinstall(
     owner   => root,
     group   => root,
     mode    => '0644',
+    require => Yumrepo['puppetlabs-pc1'],
   }
 
-  package {'puppetserver': 
+  package {'puppetserver':
+    name    => 'puppetserver',
     ensure  => $server_version,
     require => File['/etc/hosts'],
   }
@@ -26,10 +30,10 @@ class puppetinstall::serverinstall(
   exec { 'source':
     command   => 'source /root/.bash_profile',
     provider  => shell,
-    subscribe => Package['puppetserver'],    
+    subscribe => Package['puppetserver'],
   }
 
-  service { 'puppet':
+  service { 'puppetserver':
     ensure  => 'running',
     require => Package['puppetserver'],
   }

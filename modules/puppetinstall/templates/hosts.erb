@@ -1,3 +1,6 @@
-127.0.0.1 localhost
-192.168.56.50 puppet.com puppet 
-192.168.56.55 client.com client 
+127.0.0.1       puppetserver    puppetserver
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.56.50 <%= @hostname %>  <%= @fqdn %> 
+192.168.56.55 client client<%=@mydomain%>
+
